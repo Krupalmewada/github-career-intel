@@ -1,16 +1,58 @@
-# React + Vite
+# GitHub Career Intelligence 🔍
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Paste in any GitHub username and find out how their public repos stack up 
+against real job role requirements. Built this to mess around with the 
+GitHub API and see what I could learn from someone's public commit history.
 
-Currently, two official plugins are available:
+## What it does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Fetches public repos and analyzes language distribution across the top 10 
+  by stars (falls back to most recently updated)
+- Weighs languages by **bytes written**, not just file count — so a large 
+  Flutter project won't look the same as a 3-line HTML file
+- Compares detected languages against role-specific skill checklists built 
+  from real Canadian job postings
+- Shows what you have ✅, what you're missing ❌, and what's nice to have ⭐
+- Works for 10 roles: Frontend, Full Stack, Backend, React, DevOps, Mobile, 
+  Data Engineer, ML/AI, Cloud, and Junior Developer
 
-## React Compiler
+## Try it
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👉 [github-career-intel.vercel.app](https://github-career-intel.vercel.app)
 
-## Expanding the ESLint configuration
+Type in any GitHub username — try your own, try a friend's, try a senior 
+dev you admire and see what their stack actually looks like.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Known limitation
+
+Language percentages are based on **bytes of code** across public repos only.
+Private repos, work projects, and contributions to other repos aren't included.
+A single large project in one language will dominate the breakdown — which is 
+technically accurate but can be misleading if that project isn't representative 
+of your actual skills.
+
+Planning to add repo frequency weighting to balance this out properly.
+
+## Tech
+
+- React + Vite
+- GitHub REST API (public, no auth required)
+- Recharts for the pie chart
+- Tailwind CSS
+- Deployed on Vercel
+
+## Run locally
+
+```bash
+git clone https://github.com/Krupalmewada/github-career-intel.git
+cd github-career-intel
+npm install
+npm run dev
+```
+
+## What's next
+
+- Smarter language weighting (bytes + repo frequency combined)
+- Commit activity analysis — how consistent is their contribution history?
+- Compare two GitHub profiles side by side
+- Export results as PDF
