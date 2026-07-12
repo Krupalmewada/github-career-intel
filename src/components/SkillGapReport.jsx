@@ -62,6 +62,8 @@ export default function SkillGapReport({ skillGap }) {
           ))}
         </div>
       </div>
+      
     </div>
+    
   );
 }

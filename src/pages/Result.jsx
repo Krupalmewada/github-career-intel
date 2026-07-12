@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import LanguageChart from "../components/LanguageChart"
 import useGitHubProfile from "../hooks/useGitHubProfile";
 import useSkillGap from "../hooks/useSkillGap";
 import { useState } from "react";
@@ -39,6 +40,15 @@ export default function Result() {
       </div>
 
       {user && <ProfileCard user={user} />}
+      {skillGap && (
+  <LanguageChart 
+    detected={Object.fromEntries(
+      Object.entries(skillGap.detected).filter(([lang]) => 
+        skillGap.repoFrequency[lang] > 0
+      )
+    )} 
+  />
+)}
       {skillGap && <SkillGapReport skillGap={skillGap} />}
     </div>
   </div>
