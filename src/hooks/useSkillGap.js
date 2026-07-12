@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import roleChecklists from "../data/roleChecklists";
 
-export default function useSkillGap(languages, targetRole) {
+export default function useSkillGap(languages, repos, targetRole) {
   const result = useMemo(() => {
     if (!languages || !targetRole) return null;
 
@@ -15,11 +15,18 @@ export default function useSkillGap(languages, targetRole) {
       detected[lang] = Math.round((bytes / total) * 100);
     });
 
-
 // filter out languages below 1%
 const filteredDetected = Object.fromEntries(
-  Object.entries(detected).filter(([_ , pct]) => pct >= 1)
-);
+  Object.entries(detected).filter(([_, pct]) => pct >= 1)
+)
+
+// ← ADD HERE
+const repoFrequency = {}
+repos.forEach(repo => {
+  if (repo.language) {
+    repoFrequency[repo.language] = (repoFrequency[repo.language] || 0) + 1
+  }
+})
     // get checklist
     const checklist = roleChecklists[targetRole];
     if (!checklist) return null;
@@ -38,8 +45,8 @@ const filteredDetected = Object.fromEntries(
     // score
     const score = Math.round((have.length / checklist.languages.length) * 100);
 
-    return { detected: filteredDetected, have, missing, score, checklist };
-  }, [languages, targetRole]);
+    return { detected: filteredDetected, repoFrequency, have, missing, score, checklist }
+  }, [languages,repos, targetRole]);
 
   return result;
 }
