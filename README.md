@@ -12,13 +12,13 @@ GitHub API and see what I could learn from someone's public commit history.
   Flutter project won't look the same as a 3-line HTML file
 - Compares detected languages against role-specific skill checklists built 
   from real Canadian job postings
-- Shows what you have ✅, what you're missing ❌, and what's nice to have ⭐
+- Shows what you have , what you're missing , and what's nice to have 
 - Works for 10 roles: Frontend, Full Stack, Backend, React, DevOps, Mobile, 
   Data Engineer, ML/AI, Cloud, and Junior Developer
 
 ## Try it
 
-👉 [github-career-intel.vercel.app](https://github-career-intel.vercel.app)
+ [github-career-intel.vercel.app](https://github-career-intel.vercel.app)
 
 Type in any GitHub username — try your own, try a friend's, try a senior 
 dev you admire and see what their stack actually looks like.
