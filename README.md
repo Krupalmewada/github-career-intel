@@ -1,4 +1,4 @@
-# GitHub Career Intelligence 🔍
+# GitHub Career Intelligence 
 
 Paste in any GitHub username and find out how their public repos stack up 
 against real job role requirements. Built this to mess around with the 
